@@ -84,8 +84,13 @@ contract BNPL_Escrow is IERC721Receiver {
         require(block.timestamp >= deadline, "TIMELOCKED");
 
         require(!purchased, "PUCHASE_COMPLETED");
+        
+        // save total to memory
+        uint totalDeposited = depositBalance[msg.sender];
 
-        (success, data) = msg.sender.call{ value : depositBalance[msg.sender] }("");
+        depositBalance[msg.sender] = 0;
+
+        (success, data) = msg.sender.call{ value : totalDeposited }("");
 
         emit PurchaseFailed();
     }
