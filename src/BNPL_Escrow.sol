@@ -114,7 +114,6 @@ contract BNPL_Escrow is IERC721Receiver {
     ///////////////////////////////////////////////////////////////*/
 
     /// @notice nft receiver that sets purchased to true on successful purchase
-    /// note: still don't fully understand how onERC721Received works so this will require some research/testing
     function onERC721Received(
         address, 
         address, 
